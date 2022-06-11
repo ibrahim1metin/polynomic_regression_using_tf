@@ -5,7 +5,7 @@ class poly():
     def __init__(self,poly_deg):
         self.poly_deg=poly_deg  
     def predict(self,x):
-        return tf.linalg.matmul(tf.cast(x,tf.float32),self.w)
+        return tf.transpose(tf.linalg.matmul(x,self.w,transpose_a=True,transpose_b=True))
     def train(self,x,y,lr,epochs,batch_size):
         self.batch_size=batch_size
         self.w=tf.Variable(tf.random.normal((1,self.poly_deg+1)))

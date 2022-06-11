@@ -11,7 +11,7 @@ class poly():
         self.w=tf.Variable(tf.random.normal((1,self.poly_deg+1)))
         xval=tf.placeholder(tf.float32,(self.poly_deg+1,batch_size))
         yval=tf.placeholder(tf.float32,(1,batch_size))
-        y_pred=tf.linalg.matmul(xval,self.w,transpose_a=True,transpose_b=True)
+        y_pred=tf.transpose(tf.linalg.matmul(xval,self.w,transpose_a=True,transpose_b=True))
         cost=tf.math.reduce_mean(tf.math.square(y_pred-yval))
         opt=tf.compat.v1.train.GradientDescentOptimizer(lr).minimize(cost)
         init=tf.compat.v1.global_variables_initializer()

@@ -42,11 +42,9 @@ class poly():
 x =  np.random.normal(0, 1, 2000)
 y = 1.233*x - 2.9 * (x ** 2) + 0.56 * (x ** 3)+1.803
 xd=x/max(x)
-yd=y/max(y)
 deg=3
 poly_reg=poly(deg)
 vals=poly_reg.train(x,y,0.0001,3000,100)
 plt.scatter(xd, np.array(vals).reshape((2000,)),color="blue")
 plt.plot(xd, y, 'ro')
-plt.legend()
 plt.show()
